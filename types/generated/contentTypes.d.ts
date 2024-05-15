@@ -362,142 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiContentContent extends Schema.CollectionType {
-  collectionName: 'contents';
-  info: {
-    singularName: 'content';
-    pluralName: 'contents';
-    displayName: 'Content';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Type: Attribute.Enumeration<['Video', 'PDF', 'PowerPoint', 'Word']>;
-    Title: Attribute.String;
-    Link: Attribute.String;
-    Position: Attribute.Integer;
-    session: Attribute.Relation<
-      'api::content.content',
-      'manyToOne',
-      'api::session.session'
-    >;
-    Material: Attribute.Media;
-    Cover: Attribute.Media;
-    Description: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::content.content',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::content.content',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiProgramProgram extends Schema.CollectionType {
-  collectionName: 'programs';
-  info: {
-    singularName: 'program';
-    pluralName: 'programs';
-    displayName: 'Program';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Overview: Attribute.Blocks;
-    Duration: Attribute.String;
-    Tags: Attribute.String;
-    Audience: Attribute.Enumeration<['Grade 1', 'Grade 2', 'Grade 3']>;
-    sessions: Attribute.Relation<
-      'api::program.program',
-      'oneToMany',
-      'api::session.session'
-    >;
-    FocusArea: Attribute.Enumeration<['AI', 'Database', 'Coding']>;
-    Cover: Attribute.Media;
-    Description: Attribute.Text;
-    Skill: Attribute.Blocks;
-    WhatIncluded: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::program.program',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::program.program',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSessionSession extends Schema.CollectionType {
-  collectionName: 'sessions';
-  info: {
-    singularName: 'session';
-    pluralName: 'sessions';
-    displayName: 'Session';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String;
-    Tags: Attribute.Enumeration<['Basic', 'Medium', 'Advanced']>;
-    Duration: Attribute.String;
-    Overview: Attribute.Blocks;
-    Objectives: Attribute.Blocks;
-    contents: Attribute.Relation<
-      'api::session.session',
-      'oneToMany',
-      'api::content.content'
-    >;
-    Audience: Attribute.Enumeration<['Grade 1', 'Grade 2', 'Grade 3']>;
-    program: Attribute.Relation<
-      'api::session.session',
-      'manyToOne',
-      'api::program.program'
-    >;
-    DiscussionTopics: Attribute.Blocks;
-    Activities: Attribute.Blocks;
-    Alignment: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::session.session',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::session.session',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -918,6 +782,200 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiCommentComment extends Schema.CollectionType {
+  collectionName: 'comments';
+  info: {
+    singularName: 'comment';
+    pluralName: 'comments';
+    displayName: 'Comment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Attribute.String;
+    content: Attribute.String;
+    pid: Attribute.Integer;
+    uid: Attribute.Integer;
+    rid: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContentContent extends Schema.CollectionType {
+  collectionName: 'contents';
+  info: {
+    singularName: 'content';
+    pluralName: 'contents';
+    displayName: 'Content';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Type: Attribute.Enumeration<['Video', 'PDF', 'PowerPoint', 'Word']>;
+    Title: Attribute.String;
+    Link: Attribute.String;
+    Position: Attribute.Integer;
+    session: Attribute.Relation<
+      'api::content.content',
+      'manyToOne',
+      'api::session.session'
+    >;
+    Material: Attribute.Media;
+    Cover: Attribute.Media;
+    Description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::content.content',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::content.content',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNoteNote extends Schema.CollectionType {
+  collectionName: 'notes';
+  info: {
+    singularName: 'note';
+    pluralName: 'notes';
+    displayName: 'Note';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    uid: Attribute.Integer;
+    text: Attribute.String;
+    time: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::note.note', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::note.note', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProgramProgram extends Schema.CollectionType {
+  collectionName: 'programs';
+  info: {
+    singularName: 'program';
+    pluralName: 'programs';
+    displayName: 'Program';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Overview: Attribute.Blocks;
+    Duration: Attribute.String;
+    Tags: Attribute.String;
+    Audience: Attribute.Enumeration<['Grade 1', 'Grade 2', 'Grade 3']>;
+    sessions: Attribute.Relation<
+      'api::program.program',
+      'oneToMany',
+      'api::session.session'
+    >;
+    FocusArea: Attribute.Enumeration<['AI', 'Database', 'Coding']>;
+    Cover: Attribute.Media;
+    Description: Attribute.Text;
+    Skill: Attribute.Blocks;
+    WhatIncluded: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::program.program',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::program.program',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSessionSession extends Schema.CollectionType {
+  collectionName: 'sessions';
+  info: {
+    singularName: 'session';
+    pluralName: 'sessions';
+    displayName: 'Session';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Tags: Attribute.Enumeration<['Basic', 'Medium', 'Advanced']>;
+    Duration: Attribute.String;
+    Overview: Attribute.Blocks;
+    Objectives: Attribute.Blocks;
+    contents: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::content.content'
+    >;
+    Audience: Attribute.Enumeration<['Grade 1', 'Grade 2', 'Grade 3']>;
+    program: Attribute.Relation<
+      'api::session.session',
+      'manyToOne',
+      'api::program.program'
+    >;
+    DiscussionTopics: Attribute.Blocks;
+    Activities: Attribute.Blocks;
+    Alignment: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -928,9 +986,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::content.content': ApiContentContent;
-      'api::program.program': ApiProgramProgram;
-      'api::session.session': ApiSessionSession;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -939,6 +994,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::comment.comment': ApiCommentComment;
+      'api::content.content': ApiContentContent;
+      'api::note.note': ApiNoteNote;
+      'api::program.program': ApiProgramProgram;
+      'api::session.session': ApiSessionSession;
     }
   }
 }

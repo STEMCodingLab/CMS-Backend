@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "author": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "pid": {
+      "type": "integer"
+    },
+    "uid": {
+      "type": "integer"
+    },
+    "rid": {
+      "type": "integer"
+    }
+  }
+}
