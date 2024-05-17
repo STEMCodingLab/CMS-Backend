@@ -788,6 +788,7 @@ export interface ApiCommentComment extends Schema.CollectionType {
     singularName: 'comment';
     pluralName: 'comments';
     displayName: 'Comment';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -798,6 +799,7 @@ export interface ApiCommentComment extends Schema.CollectionType {
     pid: Attribute.Integer;
     uid: Attribute.Integer;
     rid: Attribute.Integer;
+    img: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
