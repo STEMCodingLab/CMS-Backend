@@ -866,6 +866,7 @@ export interface ApiNoteNote extends Schema.CollectionType {
     singularName: 'note';
     pluralName: 'notes';
     displayName: 'Note';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -874,6 +875,7 @@ export interface ApiNoteNote extends Schema.CollectionType {
     uid: Attribute.Integer;
     text: Attribute.String;
     time: Attribute.String;
+    status: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
