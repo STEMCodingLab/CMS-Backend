@@ -21,9 +21,6 @@
     "Duration": {
       "type": "string"
     },
-    "Tags": {
-      "type": "string"
-    },
     "Audience": {
       "type": "enumeration",
       "enum": [

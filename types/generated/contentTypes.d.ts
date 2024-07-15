@@ -833,7 +833,6 @@ export interface ApiContentContent extends Schema.CollectionType {
     Type: Attribute.Enumeration<['Video', 'PDF', 'PowerPoint', 'Word']>;
     Title: Attribute.String;
     Link: Attribute.String;
-    Position: Attribute.Integer;
     session: Attribute.Relation<
       'api::content.content',
       'manyToOne',
@@ -901,7 +900,6 @@ export interface ApiProgramProgram extends Schema.CollectionType {
     Title: Attribute.String;
     Overview: Attribute.Blocks;
     Duration: Attribute.String;
-    Tags: Attribute.String;
     Audience: Attribute.Enumeration<['Grade 1', 'Grade 2', 'Grade 3']>;
     sessions: Attribute.Relation<
       'api::program.program',

@@ -27,9 +27,6 @@
     "Link": {
       "type": "string"
     },
-    "Position": {
-      "type": "integer"
-    },
     "session": {
       "type": "relation",
       "relation": "manyToOne",
